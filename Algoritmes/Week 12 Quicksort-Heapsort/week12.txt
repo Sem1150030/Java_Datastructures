@@ -1,0 +1,78 @@
+
+Opdracht 1
+a.	Leg kort in je eigen woorden uit hoe het Quicksort algoritme werkt.
+    1. je hebt een lijst met getallen nodig
+    2. je kiest een pivot (een getal) het einde
+    3. je maakt een teller, temp en een index variablen aan
+    4. je gaat de lijst doorlopen en kijkt of het getal kleiner of groter is dan de pivot
+    5. als getal index kleiner is dan de pivot dan ga je de index met 1 verhogen en dan switch je de getallen (teller en index), tot slot doe je teller + 1
+    6. als getal index groter is dan de pivot dan ga je de index
+    7. als je bij het einde bent switch je de teller met de pivot dan staat de pivot op de juiste plek
+    8. nu heb je een lijst met getallen die kleiner zijn dan de pivot en een lijst met getallen die groter zijn dan de pivot
+    9. nu ga je de linker en rechter kant van de pivot sorteren
+    10. je herhaalt dit proces totdat de lijst gesorteerd is
+
+
+
+b.	Leg uit wat een pivot is.
+    een pivot is een getal die je kiest uit de lijst dit getal is na de sortering altijd op de juiste plek
+
+
+
+c.	Maakt het uit welk getal je kiest als pivot? Waarom wel of niet?
+    Ja het maakt uit als je mediaan kiest van de lijst zal je sneller klaar zijn met sorteren dan als je de grootste of kleinste kiest.
+    Dit komt omdat je dan een betere verdeling hebt van de getallen en je dus minder vaak hoeft te sorteren.
+    maar uiteindelijk maakt het alleen uit voor de snelheid niet voor het resultaat.
+
+d.	Laat zien hoe je de getallen 2, 9, 8, 4, 3, 6, 7, 5 sorteert met behulp van het Quicksort algoritme.
+
+    | Stap | j (index) | A vóór vergelijking       | A\[j] | Is A\[j] < 5? | teller i (voor) | teller i (na) | Swapping?          | A ná swap                 |
+    | ---- | --------- | ------------------------- | ----- | ------------- | --------------- | ------------- | ------------------ | ------------------------- |
+    | 1    | 0         | \[2, 9, 8, 4, 3, 6, 7, 5] | 2     | ja            | −1              | 0             | swap A\[0] ↔ A\[0] | \[2, 9, 8, 4, 3, 6, 7, 5] |
+    | 2    | 1         | \[2, 9, 8, 4, 3, 6, 7, 5] | 9     | nee           | 0               | 0             | geen               | \[2, 9, 8, 4, 3, 6, 7, 5] |
+    | 3    | 2         | \[2, 9, 8, 4, 3, 6, 7, 5] | 8     | nee           | 0               | 0             | geen               | \[2, 9, 8, 4, 3, 6, 7, 5] |
+    | 4    | 3         | \[2, 9, 8, 4, 3, 6, 7, 5] | 4     | ja            | 0               | 1             | swap A\[1] ↔ A\[3] | \[2, 4, 8, 9, 3, 6, 7, 5] |
+    | 5    | 4         | \[2, 4, 8, 9, 3, 6, 7, 5] | 3     | ja            | 1               | 2             | swap A\[2] ↔ A\[4] | \[2, 4, 3, 9, 8, 6, 7, 5] |
+    | 6    | 5         | \[2, 4, 3, 9, 8, 6, 7, 5] | 6     | nee           | 2               | 2             | geen               | \[2, 4, 3, 9, 8, 6, 7, 5] |
+    | 7    | 6         | \[2, 4, 3, 9, 8, 6, 7, 5] | 7     | nee           | 2               | 2             | geen               | \[2, 4, 3, 9, 8, 6, 7, 5] |
+
+    einde van de lijst
+    teller + 1
+    | 8    | 7         | \[2, 4, 3, 9, 8, 6, 7, 5] | 5     | ja            | 2               | 3             | swap A\[3] ↔ A\[7] | \[2, 4, 3, /5/, 8, 6, 7, 9] |
+    dan houdt je 2 lijsten over namelijk
+    2,4,3 en 5,8,6,7,9
+    herhaal deze stappen voor beide lijsten met recursie
+
+
+e.	Leg uit wat de term in-place sorteren inhoud.
+    je gebruikt maar 1 lijst zonder extra lijsten aan te maken zodat je zowel memory als tijd bespaart
+    zo behoud je O(1) space complexity
+
+f.	Wat is de worst-case tijdscomplexiteit van Quicksort? En de best case? En de average case? Waar hangt dit vanaf?
+    worst-case tijdscomplexiteit is O(n^2) als je steeds de grootste of kleinste kiest
+    best-case tijdscomplexiteit is O(n log n) als je steeds de mediaan kiest
+    average-case tijdscomplexiteit is O(n log n) als je random kiest
+
+Extra oefening voor leren
+g.	Laat zien hoe je de getallen 6, 5, 4, 3, 2, 1 sorteert met Quicksort. Kies steeds het laatste getal als pivot.
+h.	Laat zien hoe je de getallen 5, 9, 12, 1, 4, 10, 6 sorteert met Quicksort. Kies steeds het laatste getal als pivot.
+
+
+Heapsort
+
+Opdracht 2
+a.	Leg kort uit hoe Heapsort werkt.
+b.	Sorteer de volgende getallen met Heapsort: 13, 9, 6, 8, 7, 3, 5, 2, 4, 1
+Begin met het tekenen van de Heap (getallen representeren al een Heap)
+c.	Sorteer de volgende getallen met Heapsort: 100, 40, 50, 10, 25, 30, 20
+d.	Sorteer de volgende getallen met Heapsort: 1, 3, 2, 4, 5, 7
+Dit is een min-heap, dus nu sorteer je van groot naar klein ipv klein naar groot.
+
+e.	Geef minimaal 1 voordeel en 1 nadeel aan sorteeralgoritme Heapsort.
+f.	Welk algoritme zou je liever zelf gebruiken? Selection Sort, Quicksort of Heapsort? Leg kort uit waarom je deze keuze maakt.
+g.	Heeft Quicksort of Heapsort een slechtere space complexity? Of is de space complexity gelijk? Licht je antwoord toe.
+
+Opdracht 3
+a.	Maak een eigen implementatie van het Heapsort algoritme.
+Tip: https://www.edureka.co/blog/binary-heap-in-java/#code
+b.	Maak minimaal 5 unit tests en test hiermee je implementatie.
